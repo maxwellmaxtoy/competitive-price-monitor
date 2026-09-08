@@ -1,0 +1,38 @@
+{
+  "database": "price_monitor.db",
+  "significant_change_percent": 5,
+  "telegram_alert_only_significant": true,
+
+  "source": {
+    "name": "books.toscrape.com",
+    "url": "http://books.toscrape.com/",
+    "currency": "GBP",
+
+    "selectors": {
+      "product": "article.product_pod",
+      "name": "h3 a",
+      "price": "p.price_color",
+      "link": "h3 a"
+    },
+
+    "attributes": {
+      "name": "title",
+      "link": "href"
+    },
+
+    "price_symbol": "£",
+
+    "pagination": {
+      "enabled": true,
+      "next_selector": "li.next a",
+      "max_pages": 5
+    },
+
+    "resilience": {
+      "page_timeout_ms": 30000,
+      "retry_attempts": 3,
+      "retry_delay_seconds": 3,
+      "minimum_products_per_page": 1
+    }
+  }
+}
